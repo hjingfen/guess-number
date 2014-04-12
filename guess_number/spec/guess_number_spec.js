@@ -2,22 +2,17 @@ describe("Number", function () {
 
 
     beforeEach(function () {
-        init_number_database();
+
     });
 
     afterEach(function () {
-        localStorage.clear();
+
     })
 
-    it("should create a four figures which have no repeatable number", function () {
-        var number = new Number();
-        console.log(number,'num')
-        number.create();
+    it("should create a random four figures", function () {
+        var number = Number.create();
 
-
-        var activity_json = JSON.parse(localStorage.numbers);
-        expect(activity_json.length).toBe(1);
-        expect(localStorage.current_number).toBe(JSON.stringify(number.number));
+        expect(999<number<10000).toBe(true);
     });
 
 });
