@@ -6,7 +6,7 @@ Judge.judge_type = function(){
 //    var number1 = Number.create();
 //    var number2 = Number.create();
     var number1 = 1234;
-    var number2 = 8567;
+    var number2 = 1243;
     var num1 = Judge.two_numbers(number1);
     var num2 = Judge.two_numbers(number2)
     if(number1 == number2){
@@ -14,6 +14,9 @@ Judge.judge_type = function(){
     }
     if(Judge.is_3A0B(num1,num2)){
         return "3A0B";
+    }
+    if(Judge.is_2A2B(num1,num2)){
+        return "2A2B";
     }
     if(Judge.is_2A0B(num1,num2)){
         return "2A0B";
@@ -41,6 +44,15 @@ Judge.is_3A0B = function(num1,num2){
     (num1[0] == num2[0] && num1[1] == num2[1] && num1[2] != num2[2] && num1[3] == num2[3]) ||
     (num1[0] == num2[0] && num1[1] != num2[1] && num1[2] == num2[2] && num1[3] == num2[3]) ||
     (num1[0] != num2[0] && num1[1] == num2[1] && num1[2] == num2[2] && num1[3] == num2[3]);
+}
+
+Judge.is_2A2B = function(num1,num2){
+    return num1[0] == num2[0] && num1[1] == num2[1] && num1[2] == num2[3] && num1[3] == num2[2] ||
+    num1[0] == num2[0] && num1[2] == num2[2] && num1[1] == num2[3] && num1[3] == num2[1] ||
+    num1[0] == num2[0] && num1[3] == num2[3] && num1[1] == num2[2] && num1[2] == num2[1] ||
+    num1[1] == num2[1] && num1[2] == num2[2] && num1[0] == num2[3] && num1[3] == num2[0] ||
+    num1[1] == num2[1] && num1[3] == num2[3] && num1[0] == num2[2] && num1[2] == num2[0] ||
+    num1[2] == num2[2] && num1[3] == num2[3] && num1[0] == num2[1] && num1[1] == num2[0];
 }
 
 Judge.is_2A0B = function(num1,num2){
