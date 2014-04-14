@@ -9,9 +9,7 @@ Number.create = function(){
     if(not_repeat){
         return a*1000+b*100+c*10+d;
     }
-    else{
-        return Number.create();
-    }
+    return Number.create();
 }
 Number.create_0_9 = function(){
     return parseInt(Math.random()*10);
