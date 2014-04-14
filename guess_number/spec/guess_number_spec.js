@@ -1,14 +1,6 @@
 describe(" should create a random not repeatable four figures", function () {
 
 
-    beforeEach(function () {
-
-    });
-
-    afterEach(function () {
-
-    })
-
     it("should be a number", function () {
         var number = Number.create();
 
