@@ -1,5 +1,6 @@
 function Number(){
 }
+
 Number.create = function(){
     var a = parseInt(Math.random()*9 + 1);
     var b = Number.create_0_9();
@@ -11,9 +12,11 @@ Number.create = function(){
     }
     return Number.create();
 }
+
 Number.create_0_9 = function(){
     return parseInt(Math.random()*10);
 }
+
 Number.is_not_repeat = function(a,b,c,d){
     return a != b && a != c && a != d && b != c && b != d && c != d;
 }
