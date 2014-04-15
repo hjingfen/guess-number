@@ -1,52 +1,32 @@
-describe(" should judge the type of two four figures ", function () {
+function Judge(){
 
+}
 
-    it("the type of 1234 and 5678 should be 0A0B", function () {
-        var type = Judge.judge_type(1234,5678);
+Judge.judge_type = function(number1,number2){
+    var num1 = Judge.two_numbers(number1);
+    var num2 = Judge.two_numbers(number2);
+    var same = 0;
+    var like = 0;
+    for(var i = 0;i<4;i++){
+        if(num1[i] == num2[i]){
+            same++;
+        }
+        if(Judge.num1_in_num2(num2,num1[i])){
+            like++;
+        }
+    }
+    return same+'A'+(like-same)+'B';
+}
 
-        expect(type).toBe('0A0B');
-    });
+Judge.two_numbers = function(number){
+    var num = [];
+    num.push(parseInt(number / 1000));
+    num.push(parseInt((number-num[0]*1000) / 100));
+    num.push(parseInt((number-num[0]*1000-num[1]*100) / 10));
+    num.push(number % 10);
+    return num;
+}
 
-    it("the type of 1234 and 5671 should be 0A1B", function () {
-        var type = Judge.judge_type(1234,5671);
-
-        expect(type).toBe('0A1B');
-    });
-
-    it("the type of 1234 and 1567 should be 1A0B", function () {
-        var type = Judge.judge_type(1234,1567);
-
-        expect(type).toBe('1A0B');
-    });
-
-    it("the type of 1234 and 1562 should be 1A1B", function () {
-        var type = Judge.judge_type(1234,1562);
-
-        expect(type).toBe('1A1B');
-    });
-
-    it("the type of 1234 and 1236 should be 3A0B", function () {
-        var type = Judge.judge_type(1234,1236);
-
-        expect(type).toBe('3A0B');
-    });
-
-    it("the type of 1234 and 1342 should be 1A3B", function () {
-        var type = Judge.judge_type(1234,1342);
-
-        expect(type).toBe('1A3B');
-    });
-
-    it("the type of 1234 and 1234 should be 4A0B", function () {
-        var type = Judge.judge_type(1234,1234);
-
-        expect(type).toBe('4A0B');
-    });
-
-    it("the type of 1234 and 2341 should be 0A4B", function () {
-        var type = Judge.judge_type(1234,2341);
-
-        expect(type).toBe('0A4B');
-    });
-
-});
+Judge.num1_in_num2 = function(num2,number){
+    return _.find(num2,function(n){return n == number}) != undefined;
+}
