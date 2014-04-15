@@ -11,16 +11,17 @@
     <script type="text/javascript" src="../lib/underscore-min.js"></script>
 
     <!-- include src files here... -->
+    <script type="text/javascript" src="src/CreateNumberModel.js"></script>
+    <script type="text/javascript" src="src/JudgeTypeModel.js"></script>
     <script type="text/javascript" src="src/GuessNumberModel.js"></script>
-    <script type="text/javascript" src="src/JudgeNumberModel.js"></script>
 
     <!-- include fixture files here... -->
     <!--<script type="text/javascript" src="spec/fixture/fixtures.js"></script>-->
     <!--<script type="text/javascript" src="../fixture/fixtures.js"></script>-->
 
     <!-- include spec files here... -->
-    <script type="text/javascript" src="spec/guess_number_spec.js"></script>
-    <script type="text/javascript" src="spec/judge_number_spec.js"></script>
+    <script type="text/javascript" src="spec/create_number_spec.js"></script>
+    <script type="text/javascript" src="spec/judge_type_spec.js"></script>
     <script type="text/javascript" src="spec/integration_testing_spec.js"></script>
 
     <script type="text/javascript">
@@ -53,6 +54,9 @@
     </script>
 </head>
 <body>
-
+    <input type='text' id='num'>
+    <br>
+    <button class='btn-primary'>开始</button>
+    <button class='btn-primary' onclick="GuessNumber.result()">结果</button>
 </body>
 </html>
