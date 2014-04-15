@@ -2,9 +2,7 @@ function Judge(){
 
 }
 
-Judge.judge_type = function(){
-    var number1 = Number.create();
-    var number2 = Number.create();
+Judge.judge_type = function(number1,number2){
     var num1 = Judge.two_numbers(number1);
     var num2 = Judge.two_numbers(number2);
     var same = 0;
