@@ -2,11 +2,15 @@ function GuessNumber(){
 
 }
 
-var count = 6;
+GuessNumber.count = function(){
+    return 6;
+}
+
+var count = GuessNumber.count();
 
 GuessNumber.start = function(){
     count--;
-    document.getElementById('num').disabled = false;
+    return document.getElementById('num').disabled = false;
 }
 
 GuessNumber.result = function(){
@@ -17,6 +21,7 @@ GuessNumber.result = function(){
         return;
     }
     document.getElementById('show').innerHTML = result;
+    return document.getElementById('show').innerHTML;
 }
 
 GuessNumber.get_result = function(){
@@ -30,5 +35,5 @@ GuessNumber.click_result = function(){
         document.getElementById('start').disabled = 'disabled';
     }
     document.getElementById('num').value = '';
-    document.getElementById('num').disabled = true;
+    return document.getElementById('num').disabled = true;
 }
