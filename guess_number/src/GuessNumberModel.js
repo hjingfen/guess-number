@@ -19,5 +19,9 @@ GuessNumber.result = function(){
     if(count == 0){
         document.getElementById('start').disabled = 'disabled';
     }
-    return result;
+    if(result == "4A0B"){
+        alert(result+"恭喜成功！");
+        return;
+    }
+    alert(result);
 }
