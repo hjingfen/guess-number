@@ -2,18 +2,27 @@ function GuessNumber(){
 
 }
 
-GuessNumber.count = function(){
-    return 6;
-}
-
-var count = GuessNumber.count();
+//GuessNumber.refresh = function(){
+//    localStorage.count = localStorage.count || '6';
+//    if(localStorage.count != '6'){
+//        document.getElementById('num').disabled = false;
+//        return;
+//    }
+//    document.getElementById('num').disabled = true;
+//}
+//GuessNumber.refresh();
 
 GuessNumber.start = function(){
-    count--;
-    return document.getElementById('num').disabled = false;
+    var number1 = Number.create();
+    localStorage.setItem('number',number1);
+    localStorage.setItem('count',6);
+    document.getElementById('num').disabled = false;
 }
 
 GuessNumber.result = function(){
+    var count = JSON.parse(localStorage.getItem('count'));
+    count--;
+    localStorage.setItem('count',count);
     var result = GuessNumber.get_result();
     GuessNumber.click_result();
     if(result == "4A0B"){
@@ -21,19 +30,18 @@ GuessNumber.result = function(){
         return;
     }
     document.getElementById('show').innerHTML = result;
-    return document.getElementById('show').innerHTML;
 }
 
 GuessNumber.get_result = function(){
-    var number1 = Number.create();
+    var number1 = JSON.parse(localStorage.getItem('number'));
     var number2 = document.getElementById('num').value;
     return Judge.judge_type(number1,number2);
 }
 
 GuessNumber.click_result = function(){
+    var count = JSON.parse(localStorage.getItem('count'));
     if(count == 0){
-        document.getElementById('start').disabled = 'disabled';
+        document.getElementById('num').disabled = true;
     }
     document.getElementById('num').value = '';
-    return document.getElementById('num').disabled = true;
 }
