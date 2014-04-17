@@ -1,21 +1,33 @@
-describe("page", function () {
-
+describe("start button", function () {
 
     beforeEach(function () {
-        init_database();
+        document.getElementById('num').disabled = 'disabled';
     });
 
     afterEach(function () {
+        document.getElementById('num').disabled = 'disabled';
         localStorage.clear();
     })
 
-    it("should have six opportunities every time and reduce one by click result", function () {
-        var count1 = JSON.parse(localStorage.getItem('count'));
-        click_result();
-        var count2 = JSON.parse(localStorage.getItem('count'));
+    it("should have six opportunities when click the start button", function () {
+        click_start();
+        var count = JSON.parse(localStorage.getItem('count'));
 
-        expect(count1).toBe(6);
-        expect(count1 - count2 == 1).toBe(true);
+        expect(count).toBe(6);
+    });
+
+    it("should turn to an useful input when click the start button", function () {
+        click_start();
+        var status = document.getElementById('num').disabled;
+
+        expect(status).toBe(false);
+    });
+
+    it("should create and store a random not repeatable four figures when click the start button", function () {
+        click_start();
+        var number = JSON.parse(localStorage.getItem('number'));
+
+        expect(number).toBe(1234);
     });
 
 });
