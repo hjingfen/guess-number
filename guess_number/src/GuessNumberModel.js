@@ -7,6 +7,7 @@ GuessNumber.start = function(){
     localStorage.setItem('number',number1);
     localStorage.setItem('count',6);
     document.getElementById('num').disabled = false;
+    document.getElementById('show').innerHTML = '';
 }
 
 GuessNumber.result = function(){
