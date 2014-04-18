@@ -25,29 +25,7 @@ describe("start button", function () {
 
 });
 
-describe("result button", function () {
-
-    beforeEach(function () {
-        init();
-        document.getElementById('num').disabled = false;
-    });
-
-    afterEach(function () {
-        document.getElementById('num').disabled = true;
-        document.getElementById('show').innerHTML = '';
-        localStorage.clear();
-    })
-
-    it("should clear the input when click the result button", function () {
-        document.getElementById('result').click();
-        var value = document.getElementById('num').value;
-
-        expect(value).toBe('');
-    });
-
-});
-
-describe("result", function () {
+describe("result button and show result", function () {
 
     beforeEach(function(){
         init();
@@ -72,6 +50,13 @@ describe("result", function () {
         var count2 = JSON.parse(localStorage.getItem('count'));
 
         expect(count1-count2).toBe(1);
+    });
+
+    it("should clear the input when click the result button", function () {
+        document.getElementById('result').click();
+        var value = document.getElementById('num').value;
+
+        expect(value).toBe('');
     });
 
     it("should show 4A0B恭喜成功！游戏结束！at the first time", function () {
