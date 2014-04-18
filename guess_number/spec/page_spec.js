@@ -10,24 +10,24 @@ describe("start button", function () {
     })
 
     it("should have six opportunities when click the start button", function () {
-        click_start();
+        document.getElementById('start').click();
         var count = JSON.parse(localStorage.getItem('count'));
 
         expect(count).toBe(6);
     });
 
     it("should turn to an useful input when click the start button", function () {
-        click_start();
+        document.getElementById('start').click();
         var status = document.getElementById('num').disabled;
 
         expect(status).toBe(false);
     });
 
     it("should create and store a random not repeatable four figures when click the start button", function () {
-        click_start();
+        document.getElementById('start').click();
         var number = JSON.parse(localStorage.getItem('number'));
 
-        expect(number).toBe(1234);
+        expect(isNaN(number)).toBe(false);
     });
 
 });
@@ -35,39 +35,39 @@ describe("start button", function () {
 describe("result button", function () {
 
     beforeEach(function () {
-        result_button_init();
+        init();
         document.getElementById('num').disabled = false;
     });
 
     afterEach(function () {
         document.getElementById('num').disabled = true;
+        document.getElementById('show').innerHTML = '';
         localStorage.clear();
     })
 
     it("should reduce one opportunity when click the result button", function () {
         var count1 = JSON.parse(localStorage.getItem('count'));
-        click_result();
+        document.getElementById('result').click();
         var count2 = JSON.parse(localStorage.getItem('count'));
 
         expect(count1-count2).toBe(1);
     });
 
     it("should clear the input when click the result button", function () {
-        click_result();
+        document.getElementById('result').click();
         var value = document.getElementById('num').value;
 
         expect(value).toBe('');
     });
 
-    it("should be a disabled input if the count is 0 when click the result button", function () {
-        six_times();
-        var status = document.getElementById('num').disabled;
+    it("should be a disabled input if click the result button six times", function () {
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
 
-        expect(status).toBe(true);
-    });
-
-    it("should be a disabled input if success when click the result button", function () {
-        success();
         var status = document.getElementById('num').disabled;
 
         expect(status).toBe(true);
@@ -78,7 +78,7 @@ describe("result button", function () {
 describe("result", function () {
 
     beforeEach(function(){
-        click_start();
+        init();
     })
 
     afterEach(function () {
@@ -90,7 +90,7 @@ describe("result", function () {
     it("should show 4A0B恭喜成功！游戏结束！at the first time", function () {
         var number1 = JSON.parse(localStorage.getItem('number'));
         document.getElementById('num').value = number1;
-        GuessNumber.result();
+        document.getElementById('result').click();
 
         var show = document.getElementById('show').innerHTML;
 
@@ -100,10 +100,10 @@ describe("result", function () {
     it("should show 2A2B at the first time and show 4A0B恭喜成功！游戏结束 at the second time", function () {
         var number1 = JSON.parse(localStorage.getItem('number'));
         document.getElementById('num').value = change(number1);
-        GuessNumber.result();
+        document.getElementById('result').click();
         var show1 = document.getElementById('show').innerHTML;
         document.getElementById('num').value = number1;
-        GuessNumber.result();
+        document.getElementById('result').click();
         var show2 = document.getElementById('show').innerHTML;
 
         expect(show1).toBe("2A2B");
@@ -113,14 +113,14 @@ describe("result", function () {
     it("should show 2A2B at the first time and show 4A0B恭喜成功！游戏结束 at the sixth time", function () {
         var number1 = JSON.parse(localStorage.getItem('number'));
         document.getElementById('num').value = change(number1);
-        GuessNumber.result();
+        document.getElementById('result').click();
         var show1 = document.getElementById('show').innerHTML;
-        GuessNumber.result();
-        GuessNumber.result();
-        GuessNumber.result();
-        GuessNumber.result();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
         document.getElementById('num').value = number1;
-        GuessNumber.result();
+        document.getElementById('result').click();
         var show2 = document.getElementById('show').innerHTML;
 
         expect(show1).toBe("2A2B");
@@ -129,13 +129,13 @@ describe("result", function () {
 
     it("should show 2A2B游戏结束！when guess failed six times", function () {
         var number1 = JSON.parse(localStorage.getItem('number'));
-        GuessNumber.result();
-        GuessNumber.result();
-        GuessNumber.result();
-        GuessNumber.result();
-        GuessNumber.result();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
+        document.getElementById('result').click();
         document.getElementById('num').value = change(number1);
-        GuessNumber.result();
+        document.getElementById('result').click();
         var show = document.getElementById('show').innerHTML;
 
         expect(show).toBe("2A2B游戏结束！");
