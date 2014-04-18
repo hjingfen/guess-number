@@ -25,22 +25,10 @@ function success(){
     document.getElementById('num').disabled = 'disabled';
 }
 
-function init(){
-    localStorage.setItem('number','1234');
-}
-
-function show_result(num2,count){
-    var num1 = JSON.parse(localStorage.getItem('count'));
-    var result = Judge.judge_type(num1,num2);
-    if(result == "4A0B"){
-        document.getElementById('show').innerHTML = result+"恭喜成功！游戏结束！";
-        document.getElementById('num').disabled = true;
-        return;
-    }
-    document.getElementById('show').innerHTML = result;
-    if(count == 0){
-        document.getElementById('num').disabled = true;
-        document.getElementById('show').innerHTML = result+"游戏结束！";
-        return;
-    }
+function change(number1){
+    var num = Judge.two_numbers(number1);
+    num[4] = num[3];
+    num[3] = num[2];
+    num[2] = num[4];
+    return num[0]*1000+num[1]*100+num[2]*10+num[3];
 }
