@@ -30,8 +30,6 @@ GuessNumber.result = function(){
 GuessNumber.get_result = function(){
     var number1 = JSON.parse(localStorage.getItem('number'));
     var number2 = document.getElementById('num').value;
-    console.log(number1,'number1');
-    console.log(number2,'number2');
     return Judge.judge_type(number1,number2);
 }
 

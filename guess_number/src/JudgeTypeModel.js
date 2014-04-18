@@ -5,7 +5,8 @@ function Judge(){
 Judge.judge_type = function(number1,number2){
     var num1 = Judge.two_numbers(number1);
     var num2 = Judge.two_numbers(number2);
-    var same = 0,like = 0;
+    var same = 0,
+        like = 0;
     for(var i = 0;i<4;i++){
         if(num1[i] == num2[i]){
             same++;

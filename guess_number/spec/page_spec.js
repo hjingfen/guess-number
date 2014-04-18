@@ -73,5 +73,80 @@ describe("result button", function () {
         expect(status).toBe(true);
     });
 
+});
+
+describe("result", function () {
+
+    beforeEach(function(){
+        localStorage.setItem("count",1234);
+    })
+
+    afterEach(function () {
+        document.getElementById('show').innerHTML = '';
+        localStorage.clear();
+
+    })
+
+    it("should show 4A0B恭喜成功！游戏结束！at the first time", function () {
+        show_result(1234,5);
+        var show = document.getElementById('show').innerHTML;
+
+        expect(show).toBe("4A0B恭喜成功！游戏结束！");
+    });
+
+    it("should show 2A0B at the first time and show 4A0B恭喜成功！游戏结束 at the second time", function () {
+        show_result(1256,5);
+        var show1 = document.getElementById('show').innerHTML;
+        show_result(1234,4);
+        var show2 = document.getElementById('show').innerHTML;
+
+        expect(show1).toBe("2A0B");
+        expect(show2).toBe("4A0B恭喜成功！游戏结束！");
+    });
+
+    it("should show 4A0B恭喜成功！游戏结束！at the sixth time when first guess success ", function () {
+        show_result(1256,5);
+        var show1 = document.getElementById('show').innerHTML;
+        show_result(1356,4);
+        var show2 = document.getElementById('show').innerHTML;
+        show_result(1325,3);
+        var show3 = document.getElementById('show').innerHTML;
+        show_result(1258,2);
+        var show4 = document.getElementById('show').innerHTML;
+        show_result(1254,1);
+        var show5 = document.getElementById('show').innerHTML;
+        show_result(1234,0);
+        var show6 = document.getElementById('show').innerHTML;
+
+        expect(show1).toBe("2A0B");
+        expect(show2).toBe("1A1B");
+        expect(show3).toBe("1A2B");
+        expect(show4).toBe("2A0B");
+        expect(show5).toBe("3A0B");
+        expect(show6).toBe("4A0B恭喜成功！游戏结束！");
+    });
+
+    it("should show 2A0B,1A1B,1A2B,2A0B,3A0B,2A2B游戏结束！when guess failed six times", function () {
+        show_result(1256,5);
+        var show1 = document.getElementById('show').innerHTML;
+        show_result(1356,4);
+        var show2 = document.getElementById('show').innerHTML;
+        show_result(1325,3);
+        var show3 = document.getElementById('show').innerHTML;
+        show_result(1258,2);
+        var show4 = document.getElementById('show').innerHTML;
+        show_result(1254,1);
+        var show5 = document.getElementById('show').innerHTML;
+        show_result(1243,0);
+        var show6 = document.getElementById('show').innerHTML;
+
+        expect(show1).toBe("2A0B");
+        expect(show2).toBe("1A1B");
+        expect(show3).toBe("1A2B");
+        expect(show4).toBe("2A0B");
+        expect(show5).toBe("3A0B");
+        expect(show6).toBe("2A2B游戏结束！");
+    });
+
 
 });
