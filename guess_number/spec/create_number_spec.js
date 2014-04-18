@@ -1,4 +1,4 @@
-describe(" should create a random not repeatable four figures", function () {
+describe("create a random not repeatable four figures", function () {
 
 
     it("should be a number", function () {
@@ -6,7 +6,7 @@ describe(" should create a random not repeatable four figures", function () {
 
         expect(isNaN(number)).toBe(false);
     });
-    it("should be random create", function () {
+    it("should be a random create number", function () {
         var numbers = [];
         for (var i = 0;i<1000;i++){
             var number = Number.create();
@@ -16,7 +16,7 @@ describe(" should create a random not repeatable four figures", function () {
         var p = (count.length)/1000;
         expect(p<=0.005 && p>=0.001).toBe(true);
     });
-    it("should be not repeatable", function () {
+    it("shouldn't be repeatable", function () {
         var number = Number.create();
         var a = parseInt(number / 1000);
         var b = parseInt((number-a*1000) / 100);

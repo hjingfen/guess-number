@@ -1,4 +1,4 @@
-describe(" should judge the type of two four figures ", function () {
+describe("judge the type of two four figures ", function () {
 
 
     it("the type of 1234 and 5678 should be 0A0B", function () {

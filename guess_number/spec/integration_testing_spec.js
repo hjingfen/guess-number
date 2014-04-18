@@ -1,4 +1,4 @@
-describe(" should judge the type of the random not repeatable four figures and another four figures ", function () {
+describe("judge the type of the random not repeatable four figures and another four figures ", function () {
 
 
     var num1 = Number.create();
